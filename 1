@@ -1,0 +1,15 @@
+
+
+#include "formulas\include\StrPerf_v1.3.afl";
+
+period1 = Param("period1", 10, 0, 100, 1);
+period2 = Param("period2", 30, 0, 100, 1);
+
+mashort=WMA(C, period1);
+malong= WMA(C, period2);
+
+bsig = mashort>malong;
+ssig = mashort<malong;
+csig= TimeNum()>=151000;
+
+strategyPerformance(bsig,ssig,csig);
